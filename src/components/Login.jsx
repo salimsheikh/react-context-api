@@ -9,13 +9,42 @@ const Login = () => {
 
   const { setUser } = useContext(UserContext)
 
+  const validateForm = () => {
+    // Validation rules
+    if (username.trim() === '') {
+      return 'Username is required.';
+    }
+    if (username.length < 4) {
+      return 'Username must be at least 4 characters long.';
+    }
+
+    if (password.trim() === '') {
+      return 'Password is required.';
+    }
+    if (password.length < 6) {
+      return 'Password must be at least 6 characters long.';
+    }
+    if (!/[A-Z]/.test(password)) {
+      return 'Password must contain at least one uppercase letter.';
+    }
+    if (!/[a-z]/.test(password)) {
+      return 'Password must contain at least one lowercase letter.';
+    }
+    if (!/[0-9]/.test(password)) {
+      return 'Password must contain at least one number.';
+    }
+
+    return null; // Return null if all validations pass
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validate fields
-    if (username.trim() === '' || password.trim() === '') {
-      setError('Both fields are required.');
+    const errorMessage = validateForm();
+    if (errorMessage) {
+      setError(errorMessage);
       return;
     }
 
