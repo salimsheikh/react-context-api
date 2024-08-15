@@ -44,6 +44,7 @@ const Login = () => {
     // Validate fields
     const errorMessage = validateForm();
     if (errorMessage) {
+      setUser({});
       setError(errorMessage);
       return;
     }

@@ -6,7 +6,7 @@ const Profile = () => {
 
   return (
     <div>
-      {user ? (
+      {user && user.username  ? (
         <>
           <h2>Welcome, {user.username}!</h2>
           <p>Your password is {user.password}</p>
