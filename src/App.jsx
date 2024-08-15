@@ -8,9 +8,9 @@ function App() {
   return (
     <UserContextProvider>
       <div className='container'>
-        <h1>React with Chai and share is importent</h1>
+        <h1>React with Context API</h1>
         <Profile />
-        <Login />        
+        <Login />
       </div>
     </UserContextProvider>
   )
