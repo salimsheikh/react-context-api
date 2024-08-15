@@ -5,18 +5,28 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const { setUser } = useContext(UserContext)
 
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    // Validate fields
+    if (username.trim() === '' || password.trim() === '') {
+      setError('Both fields are required.');
+      return;
+    }
+
+    // Clear error and proceed if validation passes
+    setError('');
     setUser({ username, password });
-    return false;
   }
   return (
     <div className='login'>
       <h2>Login</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <input type='text'
         placeholder='Username'
         value={username}
